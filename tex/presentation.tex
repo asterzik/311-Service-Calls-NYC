@@ -14,7 +14,7 @@
 
 
 %Information to be included in the title page:
-\title{How did the acceptance of Social Distancing evolve during the Covid-19 pandemic in New York City?}
+\title{311 Social Distancing NYC}
 \subtitle{Exam project for Management of Scientific Data}
 \author{Anna Sterzik}
 \institute{Friedrich Schiller Universität Jena}
@@ -59,32 +59,29 @@ Last modified: 10-08-2020
 \item Initial Data Filtering:
 \setbeamertemplate{description item}[align left]
 \begin{description}[style = multiline]
-\item [Dates:] 020/03/01 - 2020/08/11
 \item [Description:] Including "Social Distancing"
 \end{description}
 \vfill
-\item raw data volume: 12.7 GB
+\item raw data volume: 32.8 MB
 \vfill
-\item Data Format: saved as .csv
+\item Data Format: CSV
 \vfill
-\item Licence: Open Data Law(?)
+\item Open Data \url{https://opendata.cityofnewyork.us/faq/}
 \vfill
-\item Accessed/Downloaded 2020/08/10 22:14:39 CEST
+\item Accessed/Downloaded 2020-08-11
 \end{itemize}
 \end{frame}
 \begin{frame}
 \frametitle{Generated Data}
 \begin{itemize}
 
-
-\item Data will be filtered, analyzed and visualized using jupyter notebooks, such that there is no need to modify the raw data. Everything will be done
-by the skripts.
+\item Data Quality will be monitored using \href{https://openrefine.org/}{OpenRefine}. For every version of refined data the OpenRefine project will be saved together with a version number.
 \vfill
-\item Required additional storage space for processed data and secondary outputs therefore negligible.
+\item Data will be analyzed and visualized using jupyter notebooks. 
 \vfill
-\item Formats: ipynb and pdf and tex
+\item Formats: TXT, JSON, PDF, PNG, TEX, IPYNB
 \vfill
-\item Versioning will be done with git.
+\item Everything apart from raw data will be put under version control by using git.
 \end{itemize}
 \end{frame}
 
@@ -92,64 +89,58 @@ by the skripts.
 \frametitle{Documentation and Metadata}
 \begin{itemize}
 \item Software versions used for this project:
+\setbeamertemplate{description item}[align left]
+\begin{description}
+\item[OpenRefine:] 3.3
+\item[Python: ] 3.7.4
+\item[Pandas: ] 0.25.1
+\item[Jupyter: ] 1.0.0
+\item[Matplotlib: ] 3.1.1
+\end{description}
 \vfill
 \item Documentation will be provided as a README
 \vfill
-\item Provenance will be handled by \href{https://github.com/Sheeba-Samuel/ProvBook}{ProvBook}
+\item Provenance for Data Cleansing by usage of OpenRefine
+\vfill
+\item Provenance for Jupyter Notebooks will be handled by \href{https://github.com/Sheeba-Samuel/ProvBook}{ProvBook}
 \end{itemize}
 \end{frame}
-\begin{frame}
-\frametitle{Not applicable}
-\begin{itemize}
-\item Ethics and Legal Compliance
-\end{itemize}
-\end{frame}
+
 \begin{frame}
 \frametitle{Storage and Backup}
 \begin{itemize}
-\item Data will be stored with URZ, on github and on a DVD/USB stick (3-2-1 Backup rule)
-I will be responsible for backing up onto USB stick, URZ and github are managed(?)
+\item Project will be hosted on github and additional backup will be with URZ and on a DVD/USB stick
 \vfill
-\item Data will be freely available for everyone at all times via github. (Therefore no security concerns)
+\item Data will be available for everyone at all times via github.
 \end{itemize}
 \end{frame}
 \begin{frame}
-\frametitle{Selection and Preservation}
+\frametitle{Selection, Preservation and Sharing}
 \begin{itemize}
-\item Critical part of this project is the created software only, not the third party data which is already taken care of by 311 Service Calls data base. Therefore this needs
-to be preserved
+\item The created software for analysis as well as the steps during data cleaning are essential part. The third party data is already preserved.
 \vfill
-\item The data will be preserved in a github repository,usb and urz.
+\item The project will be hosted on github and will be available under a MIT licence.
 \end{itemize}
 \end{frame}
 \begin{frame}
-\frametitle{Data Sharing}
+\frametitle{Resources}
 \begin{itemize}
-\item How will you share the data?
-github weil es software project ist.
-\vfill
-\item Are any restrictions on data sharing required?
-No restrictions required.
-\end{itemize}
-\end{frame}
-\begin{frame}
-\frametitle{Responsibilities and Resources}
-\begin{itemize}
-\item Who will be responsible for data management?
-I will be responsible for all that stuff because it is only a very small project.
-\vfill
-\item What resources will you require to deliver your plan?
-Only ressources required is storage capacity from URZ.
+\item The only ressources required are storage capacity from URZ.
 \end{itemize}
 \end{frame}
 \section{Description of the Dataset}
 \begin{frame}
-\frametitle{311 Service Requests in New York City from 2010 to present}
+\frametitle{Description of the Dataset}
+311 Service Requests in New York City from 2010 to present
+\vfill
 \begin{itemize}
-\item Non-emergency Social Service Requestss
+\item Non-emergency social service requests
+\vfill
 \item Provider: DoITT Department of Information Technology \& Telecommunications
+\vfill
 \item Owner: NYC OpenData
-\item 41 Columns in the Dataset include Unique Key, Information about Dates (Opening, closing), Agency, Complaint Type, Location Information
+\vfill
+\item There are 41 columns in the dataset, they include but are not limited to unique key, information about time, agency, complaint type, location information
 \item Each row is a service request
 \end{itemize}
 \end{frame}
@@ -171,13 +162,8 @@ Only ressources required is storage capacity from URZ.
 \frametitle{Facets}
 \begin{columns}
 \column{0.5\textwidth}
-\begin{itemize}
-
-\item Facets can be used to get a better overview over the data in specific columns.
-\vfill
-\item The Complaint Types and Agency Names seem to be reasonible.
-
-\end{itemize}
+Facets can be used to get a better overview over the data in specific columns.
+The Complaint Types and Agency Names seem to be reasonible.
 \column{0.5\textwidth}
 \includegraphics[width = 0.8\textwidth]{pictures/facets.png}
 \end{columns}
@@ -193,19 +179,13 @@ Clustering is another option to identify erronous data, especially spelling mist
 Using OpenRefine one can also sort the values by certain columns. That way one can e.g. determine if the given longitudes and latitudes are reasonable.
 Here the latitudes and longitudes seem to be valid for NYC.
 \vfill
-The same can be done for the dates. The creating dates for example start with 03/28/2020 and end with 08/10/2020. This seems to be right as well, because PAUSE started at 03/22/2020 (https://www.governor.ny.gov/news/governor-cuomo-signs-new-york-state-pause-executive-order)
+The same can be done for the dates. The creating dates for example start with 2020-03-28 and end with 2020-08-10. This seems to be right as well, because PAUSE started at 2020-03-22.
+\vfill
 \includegraphics[width=0.5\textwidth]{pictures/sorting.png}
 \end{frame}
 \begin{frame}
-\frametitle{There is more}
-Open Refine offers many more tools for Data Cleaning such as:
-\begin{itemize}
-\item Trimming of Leading and Trailing Whitespaces
-\end{itemize}
-\end{frame}
-\begin{frame}
 \frametitle{Saving}
-OpenRefine projects can be exported. The resulting files do only contain .txt files and .json files. These files describe all changes made with the data -> provenance is automatically included.
+OpenRefine projects can be exported. The resulting files do only contain TXT files and JSON files. These files describe all changes made with the data.
 \end{frame}
 \section{Data analysis}
 \begin{frame}
@@ -228,7 +208,7 @@ Data analysis will be done using pandas library in a jupyter notebook environmen
 \begin{frame}
 \begin{itemize}
 \frametitle{Preservation and Publishing}
-\item Publishing on Github
+\item Publishing on Github: \url{github.com/azuki-monster/311-Service-Calls-NYC}
 \vfill
 \item Backup copies with the URZ and a USB drive as well
 \vfill

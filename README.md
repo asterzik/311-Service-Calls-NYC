@@ -1,4 +1,4 @@
-# 311-Service-Calls-NYC
+# 311-Social-Distancing-NYC
 
 This project was created for the lecture Management of Computational and Data Science at Friedrich Schiller University Jena in Aug. 2020.
 

@@ -278,3 +278,6 @@ TSWLatexianTemp*
 
 #Exclude the data
 data
+
+#python
+*.ipynb_checkpoints
